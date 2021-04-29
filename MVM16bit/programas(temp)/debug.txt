@@ -1,0 +1,19 @@
+const subroutineAddress = 0x3000;
+let i = 0;
+
+cpu.debug();
+cpu.viewMemoryAt(cpu.getRegister('ip'));
+cpu.viewMemoryAt(0xffff - 1 - 42, 44);
+
+const rl = readline.createInterface({
+    // Criar uma interface conectada ao STD.I e STD.O do terminal
+    input: process.stdin,
+    output: process.stdout,
+});
+
+rl.on('line', () => {
+    cpu.step();
+    cpu.debug();
+    cpu.viewMemoryAt(cpu.getRegister('ip'));
+    cpu.viewMemoryAt(0xffff - 1 - 42, 44);
+});
